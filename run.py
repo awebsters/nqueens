@@ -5,8 +5,8 @@
 #
 
 import sys
-
 from nqueens import solve
+import time
 
 if len(sys.argv) != 2:
     print("\n\tUsage: python3 run.py <test-file>\n")
@@ -28,7 +28,11 @@ def print_answer(solve):
 
 
 for p in problems:
+    t1 = time.time()
     answer = solve(p)
+    t2 = time.time()
+
     print(answer)
+    print("Time elapsed for n=", p, "is", t2-t1)
     # print_answer(answer)
     print("\n")
