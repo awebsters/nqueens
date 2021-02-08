@@ -32,7 +32,7 @@ for p in problems:
     answer = solve(p)
     t2 = time.time()
 
-    print(answer)
+    # print(answer)
     print("Time elapsed for n=", p, "is", t2-t1)
     # print_answer(answer)
     print("\n")
