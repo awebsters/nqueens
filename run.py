@@ -23,16 +23,48 @@ with open(in_file) as f:
 def print_answer(solve):
     for row in range(len(solve)):
         for col in range(len(solve)):
-            print('Q' if solve[col] == row + 1 else '_', end=" ")
+            print('Q ' if solve[col] == row + 1 else '_ ')
         print("")
+
+
+def is_solution(current):
+    for i in range(len(current)):
+        queen = (current[i], i)
+        if count_conflicts(queen, current) != 0:
+            return False
+    return True
+
+
+def count_conflicts(root_queen, all_queens):
+    conflicts = 0
+
+    for i in range(len(all_queens)):
+        queen = (all_queens[i], i)
+        if root_queen == queen:
+            continue
+        conflicts += int(does_conflict(root_queen, queen))
+
+    return conflicts
+
+
+def does_conflict(queen1_position, queen2_position):
+    # Consider 4 diagonals
+    x_difference = abs(queen1_position[1] - queen2_position[1])
+    y_difference = abs(queen1_position[0] - queen2_position[0])
+
+    return x_difference == y_difference or \
+           queen1_position[1] == queen2_position[1] or \
+           queen1_position[0] == queen2_position[0]
 
 
 for p in problems:
     t1 = time.time()
     answer = solve(p)
     t2 = time.time()
+    print(answer)
 
     # print(answer)
     print("Time elapsed for n=", p, "is", t2-t1)
+
     # print_answer(answer)
     print("\n")
