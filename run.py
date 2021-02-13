@@ -61,7 +61,7 @@ for p in problems:
     t1 = time.time()
     answer = solve(p)
     t2 = time.time()
-    print(answer)
+    # print(answer)
 
     # print(answer)
     print("Time elapsed for n=", p, "is", t2-t1)
